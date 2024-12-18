@@ -1,0 +1,50 @@
+package com.example.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/employes")
+public class EmployeController {
+
+    @Autowired
+    private EmployeService employeService;
+
+    // Create a new employee
+    @PostMapping
+    public ResponseEntity<Employe> ajouterEmploye(@RequestBody Employe employe) {
+        Employe nouveauEmploye = employeService.ajouterEmploye(employe);
+        return ResponseEntity.ok(nouveauEmploye);
+    }
+
+    // Get all employees
+    @GetMapping
+    public ResponseEntity<List<Employe>> getAllEmployes() {
+        List<Employe> employes = employeService.getAllEmployes();
+        return ResponseEntity.ok(employes);
+    }
+
+    // Get employee by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Employe> getEmployeById(@PathVariable Long id) {
+        Employe employe = employeService.getEmployeById(id).orElseThrow(() -> new RuntimeException("Employe not found"));
+        return ResponseEntity.ok(employe);
+    }
+
+    // Update an employee
+    @PutMapping("/{id}")
+    public ResponseEntity<Employe> modifierEmploye(@PathVariable Long id, @RequestBody Employe employeDetails) {
+        Employe employe = employeService.modifierEmploye(id, employeDetails);
+        return ResponseEntity.ok(employe);
+    }
+
+    // Delete an employee
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> supprimerEmploye(@PathVariable Long id) {
+        employeService.supprimerEmploye(id);
+        return ResponseEntity.noContent().build();
+    }
+}

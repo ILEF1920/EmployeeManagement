@@ -1,0 +1,34 @@
+package com.example.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class EmployeeControllerTest {
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@Test
+	void testEmployeeController() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllEmployees() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddEmployee() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteEmployee() {
+		fail("Not yet implemented");
+	}
+
+}

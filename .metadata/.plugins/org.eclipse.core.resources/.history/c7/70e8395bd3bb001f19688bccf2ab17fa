@@ -1,0 +1,34 @@
+package com.example.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class EmployeServiceTest {
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@Test
+	void testAjouterEmploye() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testTrouverEmployeParId() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSupprimerEmploye() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testObtenirEmployesTriesParSalaire() {
+		fail("Not yet implemented");
+	}
+
+}

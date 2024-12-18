@@ -1,0 +1,40 @@
+package com.example.cicddemo.service;
+
+import com.example.cicddemo.model.Employe;
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class EmployeService {
+    private final Map<Integer, Employe> employeRepository = new HashMap<>();
+
+    // Ajouter un employé
+    public Employe ajouterEmploye(Employe employe) {
+        if (employeRepository.containsKey(employe.getId())) {
+            throw new IllegalArgumentException("L'employé avec cet ID existe déjà.");
+        }
+        employeRepository.put(employe.getId(), employe);
+        return employe;
+    }
+
+    // Trouver un employé par ID
+    public Employe trouverEmployeParId(int id) {
+        return Optional.ofNullable(employeRepository.get(id))
+                .orElseThrow(() -> new NoSuchElementException("Employé introuvable."));
+    }
+
+    // Supprimer un employé
+    public boolean supprimerEmploye(int id) {
+        if (!employeRepository.containsKey(id)) {
+            throw new NoSuchElementException("Impossible de supprimer, employé introuvable.");
+        }
+        employeRepository.remove(id);
+        return true;
+    }
+
+    // Obtenir une liste triée par salaire
+    public List<Employe> obtenirEmployesTriesParSalaire() {
+        return employeRepository.values().stream()
+                .sorted(Comparator.comparingDouble(Employe::getSalaire).reversed())
+                .collect(Collectors.toList());
+    }
+}
